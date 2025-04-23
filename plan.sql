@@ -1,4 +1,11 @@
+--The plan for the query
 explain plan set statement_id = 'myplan_1' for select * from editions where pub_place='Madrid';
+
+--Use autotrace for trace only
+set autotrace on traceonly;
+
+--Try again the query
+select * from editions where pub_place='Madrid';
 
 
 --select * from table(DBMS_XPLAN.DISPLAY);

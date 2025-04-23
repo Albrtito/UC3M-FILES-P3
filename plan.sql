@@ -4,3 +4,5 @@ explain plan set statement_id = 'myplan_1' for select * from editions where pub_
 --select * from table(DBMS_XPLAN.DISPLAY);
 --SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY(NULL, 'myplan_1', 'BASIC'));
 --SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT=>'+ALLSTATS'));
+
+

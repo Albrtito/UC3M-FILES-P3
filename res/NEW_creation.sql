@@ -49,7 +49,8 @@ CONSTRAINT fk_more_authors_books FOREIGN KEY(title,main_author) REFERENCES books
 );
 
 --
-
+drop cluster places;
+create cluster places(pub_place varchar2(50));
 CREATE TABLE Editions(
 ISBN               VARCHAR2(20),
 TITLE              VARCHAR2(200) NOT NULL,
@@ -71,7 +72,8 @@ URL                VARCHAR2(200),
 CONSTRAINT pk_editions PRIMARY KEY(isbn),
 CONSTRAINT uk_editions UNIQUE (national_lib_id),
 CONSTRAINT fk_editions_books FOREIGN KEY(title,author) REFERENCES books(title,author)
-);
+) cluster places(pub_place);
+create index idx_places on cluster places;
 
 --
 

@@ -1,6 +1,11 @@
 @2025-04-23
 
 # What to do?
+What we did in class is **one of the queries** proposed in the exercise. 
+```sql
+select * from editions where pub_place='…';
+-- values like 'Madrid', 'Segovia', or 'Barataria', to name a few examples
+```
 
 1. Run the query with the plan to know the pan there is:
 @plan.sql
@@ -111,6 +116,7 @@ create cluster places(pub_place varchar2(50))
 create table editions(..) cluster places(pub_place);
 
 ```
+
 * We need to take a prime number, unless it'll take the automatically next bigger prime
 
 Then run the autotrace again and the select query for madrid and segovia to see the sizes of accesses. 
@@ -119,7 +125,13 @@ The addressing space value will have pros and cons:
 * Smaller number -> more collisions more density
 * Bigger number -> more collisions less density
 
+**RESULTS**
+* The fullscan is not being damaged that much
++ We could try to increment the size of the hashkeys tables but we wont see that much difference 
 
+8. Other processes
+*The second porcesses does not need a cluster
+*The last ones behave good with fullscan
 
 
 ***

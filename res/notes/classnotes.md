@@ -20,8 +20,8 @@ select * from editions;
 
 Then select explicitly for something: (Segovia and madrid)
 ```sql
-select * from editoins where pub_place='Madrid';
-select * from editoins where pub_place='Segovia';
+select * from editions where pub_place='Madrid';
+select * from editions where pub_place='Segovia';
 ```
 
 5. Create indexes
@@ -101,6 +101,23 @@ CONSTRAINT uk_editions UNIQUE (national_lib_id),
 CONSTRAINT fk_editions_books FOREIGN KEY(title,author) REFERENCES books(title,author)
 ) cluster places(pub_place);
 ```
+
+7. Using the hashkeys table: 
+With the hashkey the index is not needed:
+```sql
+drop cluster places;
+create cluster places(pub_place varchar2(50))
+    single table Hashkeys 251;
+create table editions(..) cluster places(pub_place);
+
+```
+* We need to take a prime number, unless it'll take the automatically next bigger prime
+
+Then run the autotrace again and the select query for madrid and segovia to see the sizes of accesses. 
+
+The addressing space value will have pros and cons:
+* Smaller number -> more collisions more density
+* Bigger number -> more collisions less density
 
 
 

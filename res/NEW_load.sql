@@ -150,5 +150,13 @@ SELECT * FROM (
 where TEXT is not null AND (p1,p2,p3) in (select signature, user_id,stopdate from loans);
 -- 5447 rows
 update copies set condition=substr('NGWVD', dbms_random.value(1,6),1); 
+
+ANALYZE TABLE name COMPUTE statistics;
+ANALYZE TABLE name estimate statistics sample 10 percent;
+
 commit;
+
+
+
+
 

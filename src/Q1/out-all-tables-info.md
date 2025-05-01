@@ -6,6 +6,14 @@ select table_name, avg_row_len, num_rows, blocks from user_tables;
 
 ### After adding that new line to the NEW_load.sql
 
+
+> !(ATTENTION) THE TABLE STATISTICS ARE EMPTY
+> We need to compute statistics again using:
+
+``` sql 
+ANALYZE TABLE name COMPUTE statistics;
+ANALYZE TABLE name estimate statistics sample 10 percent;
+```
 ```sql
 
 select table_name, avg_row_len, num_rows, blocks from user_tables;
@@ -66,5 +74,6 @@ STUDENTS                                                                        
               0          5
 USERS
 
-31 rows selected.
+31 rows selected
 ```
+

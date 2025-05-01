@@ -7,7 +7,7 @@ select * from editions where pub_place='…';
 -- values like 'Madrid', 'Segovia', or 'Barataria', to name a few examples
 ```
 
-1. Run the query with the plan to know the pan there is:
+1. Run the query with the plan to know the plan there is:
 @plan.sql
 
 2. Set the autotrace like in [[#Autotrace]]

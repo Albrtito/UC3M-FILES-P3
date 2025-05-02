@@ -242,5 +242,9 @@ CONSTRAINT fk_posts_loans FOREIGN KEY(signature,user_id,stopdate)
 CONSTRAINT ck_posts_dates CHECK (stopdate<post_date)
 );
 
+-- Analyze the tables
+ANALYZE TABLE editions COMPUTE statistics;
+ANALYZE TABLE editions estimate statistics sample 10 percent;
 
+commit;
 

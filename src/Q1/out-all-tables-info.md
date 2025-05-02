@@ -10,10 +10,8 @@ select table_name, avg_row_len, num_rows, blocks from user_tables;
 > !(ATTENTION) THE TABLE STATISTICS ARE EMPTY
 > We need to compute statistics again using:
 
-``` sql 
-ANALYZE TABLE name COMPUTE statistics;
-ANALYZE TABLE name estimate statistics sample 10 percent;
-```
+**Initial output of the command** 
+
 ```sql
 SQL> select table_name, avg_row_len, num_rows, blocks from user_tables;
 

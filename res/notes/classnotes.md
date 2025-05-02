@@ -130,8 +130,8 @@ The addressing space value will have pros and cons:
 + We could try to increment the size of the hashkeys tables but we wont see that much difference 
 
 8. Other processes
-*The second porcesses does not need a cluster
-*The last ones behave good with fullscan
++ The second porcesses does not need a cluster
++ The last ones behave good with fullscan
 
 
 ***

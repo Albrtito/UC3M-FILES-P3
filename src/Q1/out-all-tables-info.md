@@ -15,65 +15,49 @@ ANALYZE TABLE name COMPUTE statistics;
 ANALYZE TABLE name estimate statistics sample 10 percent;
 ```
 ```sql
-
-select table_name, avg_row_len, num_rows, blocks from user_tables;
+SQL> select table_name, avg_row_len, num_rows, blocks from user_tables;
 
 TABLE_NAME                                                                                                                       AVG_ROW_LEN   NUM_ROWS     BLOCKS
 -------------------------------------------------------------------------------------------------------------------------------- ----------- ---------- ----------
 ASSIGN_BUS
 ASSIGN_DRV
-BIBUS                                                                                                                                      0
-              0          5
-BIBUSERO                                                                                                                                   0
-              0          5
-BIBUSERO_STATE                                                                                                                             0
-              0          5
+BIBUS                                                                                                                                      0          0          5
+BIBUSERO                                                                                                                                   0          0          5
+BIBUSERO_STATE                                                                                                                             0          0          5
 BIBUSES
-BIBUS_STATE                                                                                                                                0
-              0          5
+BIBUS_STATE                                                                                                                                0          0          5
 BOOKS
-BOOK_ENTRIES                                                                                                                               0
-              0          5
-BOOK_LOANS                                                                                                                                 0
-              0          0
-BOOK_RESERVATIONS                                                                                                                          0
-              0          5
+BOOK_EDITIONS                                                                                                                              0          0          0
+BOOK_ENTRIES                                                                                                                               0          0          5
+BOOK_LOANS                                                                                                                                 0          0          0
 
 TABLE_NAME                                                                                                                       AVG_ROW_LEN   NUM_ROWS     BLOCKS
 -------------------------------------------------------------------------------------------------------------------------------- ----------- ---------- ----------
+BOOK_RESERVATIONS                                                                                                                          0          0          5
 COPIES
+COURSES                                                                                                                                    0          0          5
 DRIVERS
-EDITIONS
-ID_ROUTES                                                                                                                                  6
-            150          5
+EDITIONS                                                                                                                                 221     240632       7552
+ENROLLMENTS                                                                                                                                0          0          5
+ID_ROUTES                                                                                                                                  6        150          5
 LOANS
 MORE_AUTHORS
 MUNICIPALITIES
-MUNICIPALITY                                                                                                                               0
-              0          0
-M_LIBRARY                                                                                                                                  0
-              0          0
-POSTS
-ROUTES
+MUNICIPALITY                                                                                                                               0          0          0
 
 TABLE_NAME                                                                                                                       AVG_ROW_LEN   NUM_ROWS     BLOCKS
 -------------------------------------------------------------------------------------------------------------------------------- ----------- ---------- ----------
+M_LIBRARY                                                                                                                                  0          0          0
+POSTS
+PROFESSORS                                                                                                                                 0          0          5
+ROUTES
 SERVICES
-SROUTES                                                                                                                                    0
-              0          5
+SROUTES                                                                                                                                    0          0          5
 STOPS
-BOOK_EDITIONS                                                                                                                              0
-              0          0
-COURSES                                                                                                                                    0
-              0          5
-ENROLLMENTS                                                                                                                                0
-              0          5
-PROFESSORS                                                                                                                                 0
-              0          5
-STUDENTS                                                                                                                                   0
-              0          5
+STUDENTS                                                                                                                                   0          0          5
 USERS
 
-31 rows selected
+31 rows selected.
+
 ```
 

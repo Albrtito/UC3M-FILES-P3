@@ -48,6 +48,10 @@ CONSTRAINT pk_more_authors PRIMARY KEY(title,main_author,alt_authors),
 CONSTRAINT fk_more_authors_books FOREIGN KEY(title,main_author) REFERENCES books(title,author)
 );
 
+--drop cluster places;
+--create cluster places(pub_place varchar2(50));
+--create table editions(..) cluster places(pub_place);
+--create index idx_places on cluster places;
 --
 drop cluster places;
 create cluster places(pub_place varchar2(50))

@@ -50,7 +50,7 @@ CONSTRAINT fk_more_authors_books FOREIGN KEY(title,main_author) REFERENCES books
 
 --
 drop cluster places;
-create cluster places(pub_place varchar2(50))
+create cluster places(pub_place varchar2(50));
 CREATE TABLE Editions(
 ISBN               VARCHAR2(20),
 TITLE              VARCHAR2(200) NOT NULL,

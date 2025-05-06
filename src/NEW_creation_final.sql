@@ -76,7 +76,7 @@ create table editions(
     constraint pk_editions primary key(isbn),
     constraint uk_editions unique (national_lib_id),
     constraint fk_editions_books foreign key(title,author) references books(title,author)
-) cluster publishers(publisher);
+) cluster places(pub_place);
 -- Only one cluster can be used
 create index idx_places on cluster places;
 create index idx_publishers on cluster publishers;

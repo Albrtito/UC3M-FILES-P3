@@ -24,18 +24,17 @@ DROP TABLE books;
 -- CREATE ALL TABLES
 -- -----------------
 
-CREATE TABLE books
-(
-    title VARCHAR2(200),
-    author VARCHAR2(100),
-    country VARCHAR2(50),
-    LANGUAGE           VARCHAR2(50),
-    PUB_DATE           NUMBER(4),
-    ALT_TITLE          VARCHAR2(200),
-    TOPIC              VARCHAR2(200),
-    CONTENT            VARCHAR2(2500),
-    AWARDS             VARCHAR2(200),
-    CONSTRAINT pk_books PRIMARY KEY (title, author)
+CREATE TABLE books(
+TITLE              VARCHAR2(200),
+AUTHOR             VARCHAR2(100),
+COUNTRY            VARCHAR2(50),
+LANGUAGE           VARCHAR2(50),
+PUB_DATE           NUMBER(4),
+ALT_TITLE          VARCHAR2(200),
+TOPIC              VARCHAR2(200),
+CONTENT            VARCHAR2(2500),
+AWARDS             VARCHAR2(200),
+CONSTRAINT pk_books PRIMARY KEY(title,author)
 );
 
 --
@@ -50,29 +49,37 @@ CONSTRAINT fk_more_authors_books FOREIGN KEY(title,main_author) REFERENCES books
 );
 
 --
-CREATE TABLE Editions(
-ISBN               VARCHAR2(20),
-TITLE              VARCHAR2(200) NOT NULL,
-AUTHOR             VARCHAR2(100) NOT NULL,
-LANGUAGE           VARCHAR2(50) default('Spanish') NOT NULL,
-ALT_LANGUAGES      VARCHAR2(50),
-EDITION            VARCHAR2(50),
-PUBLISHER          VARCHAR2(100),
-EXTENSION          VARCHAR2(50),
-SERIES             VARCHAR2(50),
-COPYRIGHT          VARCHAR2(20),
-PUB_PLACE          VARCHAR2(50),
-DIMENSIONS         VARCHAR2(50),
-PHY_FEATURES       VARCHAR2(200),
-MATERIALS          VARCHAR2(200),
-NOTES              VARCHAR2(500),
-NATIONAL_LIB_ID    VARCHAR2(20) NOT NULL,
-URL                VARCHAR2(200),
-CONSTRAINT pk_editions PRIMARY KEY(isbn),
-CONSTRAINT uk_editions UNIQUE (national_lib_id),
-CONSTRAINT fk_editions_books FOREIGN KEY(title,author) REFERENCES books(title,author)
-);
 
+drop table editions cascade constraints;
+drop cluster places;
+drop cluster publishers;
+create cluster publishers (publisher varchar2(100));
+create cluster places (pub_place varchar2(50));
+create table editions(
+    isbn               varchar2(20),
+    title              varchar2(200) not null,
+    author             varchar2(100) not null,
+    language           varchar2(50) default('spanish') not null,
+    alt_languages      varchar2(50),
+    edition            varchar2(50),
+    publisher          varchar2(100),
+    extension          varchar2(50),
+    series             varchar2(50),
+    copyright          varchar2(20),
+    pub_place          varchar2(50),
+    dimensions         varchar2(50),
+    phy_features       varchar2(200),
+    materials          varchar2(200),
+    notes              varchar2(500),
+    national_lib_id    varchar2(20) not null,
+    url                varchar2(200),
+    constraint pk_editions primary key(isbn),
+    constraint uk_editions unique (national_lib_id),
+    constraint fk_editions_books foreign key(title,author) references books(title,author)
+) cluster places(pub_place);
+-- Only one cluster can be used
+create index idx_places on cluster places;
+create index idx_publishers on cluster publishers;
 --
 
 CREATE TABLE Copies(
@@ -85,7 +92,7 @@ CONSTRAINT pk_copies PRIMARY KEY(signature),
 CONSTRAINT fk_copies_editions FOREIGN KEY(isbn) REFERENCES editions(isbn),
 CONSTRAINT ck_condition CHECK (condition in ('N', 'G', 'W', 'V', 'D') )
 );
-
+CREATE INDEX idx_condition ON copies(condition);
 --
 
 CREATE TABLE municipalities (
@@ -238,3 +245,8 @@ CONSTRAINT ck_posts_dates CHECK (stopdate<post_date)
 
 
 
+-- Analyze the tables
+ANALYZE TABLE editions COMPUTE statistics;
+ANALYZE TABLE editions estimate statistics sample 10 percent;
+
+commit;

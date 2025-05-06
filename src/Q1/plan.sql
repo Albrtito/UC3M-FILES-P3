@@ -8,7 +8,7 @@ set autotrace on traceonly;
 select * from editions where pub_place='Madrid';
 
 
---select * from table(DBMS_XPLAN.DISPLAY);
+select * from table(DBMS_XPLAN.DISPLAY);
 --SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY(NULL, 'myplan_1', 'BASIC'));
 --SELECT * FROM TABLE(DBMS_XPLAN.DISPLAY(FORMAT=>'+ALLSTATS'));
 

@@ -52,7 +52,7 @@ select * from editions where publisher='B'
 
 -- STEP 3 - QUERY 3
 FOR fila in (
-select * from copies where condition='G'
+SELECT /*+ INDEX(copies idx_condition) */ * FROM copies WHERE condition = 'G';
 ) LOOP null; END LOOP;
 
 -- STEP 4 - QUERY 1
@@ -67,7 +67,7 @@ select * from editions where publisher='SM'
 
 -- STEP 6 - QUERY 3
 FOR fila in (
-select * from copies where condition='N'
+SELECT /*+ INDEX(copies idx_condition) */ * FROM copies WHERE condition = 'N';
 ) LOOP null; END LOOP;
 
 -- STEP 7 - QUERY 1
@@ -82,12 +82,12 @@ select * from editions where publisher='C'
 
 -- STEP 9 - QUERY 3
 FOR fila in (
-select * from copies where condition='D'
+SELECT /*+ INDEX(copies idx_condition) */ * FROM copies WHERE condition = 'D';
 ) LOOP null; END LOOP;
 
 -- STEP 10 - QUERY 4
 FOR fila in (
-select * from editions
+SELECT /*+ PARALLEL(editions, 4) FULL(editions) */ * FROM editions;
 ) LOOP null; END LOOP;
 
 END PR_WORKLOAD;

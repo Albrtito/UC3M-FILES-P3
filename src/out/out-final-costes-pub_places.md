@@ -24,4 +24,27 @@ PL/SQL procedure successfully completed.
 SQL>
 ```
 
+# Results of package with cluster on pub_places
+```sql
+SQL> begin
+  2  pkg_costes.run_test(10);
+  3  end;
+  4  /
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration 10
+RESULTS AT 06/05/2025 18:26:10
+TIME CONSUMPTION (run): 1845.5 milliseconds.
+CONSISTENT GETS (workload):115928.4 acc
+CONSISTENT GETS (weighted average):11592.84 acc
 
+PL/SQL procedure successfully completed.
+
+```

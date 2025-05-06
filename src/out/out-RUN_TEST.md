@@ -21,8 +21,8 @@ PL/SQL procedure successfully completed.
 ## Resultados con #iterations = 10
 ```sql
 begin
-  2  pKG_COSTES.RUN_TEST(10);
-  3  end;
+pKG_COSTES.RUN_TEST(10);
+  end;
   4  /
 Iteration 1
 Iteration 2

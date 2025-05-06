@@ -74,3 +74,29 @@ CONSISTENT GETS (weighted average):11432.4 acc
 PL/SQL procedure successfully completed.
 
 ```
+
+## Results with pub_places and hints
+```sql
+SQL> begin
+  2  pkg_costes.run_test(10);
+  3  end;
+  4  /
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Iteration 5
+Iteration 6
+Iteration 7
+Iteration 8
+Iteration 9
+Iteration 10
+RESULTS AT 06/05/2025 18:42:25
+TIME CONSUMPTION (run): 1216.3 milliseconds.
+CONSISTENT GETS (workload):57443 acc
+CONSISTENT GETS (weighted average):5744.3 acc
+
+PL/SQL procedure successfully completed.
+
+
+```
